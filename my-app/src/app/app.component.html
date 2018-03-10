@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+
+
+<body>
+<nav class="navbar navbar-inverse bg-inverse">
+  <h1 class="navbar-brand mb-0">Moitor</h1>
+</nav>
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link"  (click)="temperature()" href="#">Temperature</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="humidity()" href="#">Humidity</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="pressure()" href="#">Pressure</a>
+  </li>
+</ul>
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col">
+      <div class="card card-inverse bg-inverse">
+        <div class="card-block">
+          <h3 class="card-title">Sun</h3>
+          <p id="Value_L1">Value</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-inverse bg-inverse">
+        <div class="card-block">
+          <h3 class="card-title">Mercury</h3>
+          <p id="Value_L2">Value</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-inverse bg-inverse">
+        <div class="card-block">
+          <h3 class="card-title">Venus</h3>
+          <p id="Value_L3">Value</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-inverse bg-inverse">
+        <div class="card-block">
+          <h3 class="card-title">Earth</h3>
+          <p id="Value_L4">Value</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-inverse bg-inverse">
+        <div class="card-block">
+          <h3 class="card-title">Mars</h3>
+          <p id="Value_L5">Value</p>
+        </div>
+      </div>
+    </div>
+    <!-- break -->
+    <div class="col-12 p-2"></div>
+    <!-- row 2 -->
+    <div class="col">
+      <div class="card card-inverse bg-inverse">
+        <div class="card-block">
+          <h3 class="card-title">Jupiter</h3>
+          <p id="Value_L6">Value</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-inverse bg-inverse">
+        <div class="card-block">
+          <h3 class="card-title">Saturn</h3>
+          <p id="Value_L7">Value</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-inverse bg-inverse">
+        <div class="card-block">
+          <h3 class="card-title">Uraus</h3>
+          <p id="Value_L8">Value</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-inverse bg-inverse">
+        <div class="card-block">
+          <h3 class="card-title">Neptune</h3>
+          <p id="Value_L9">Value</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-inverse bg-inverse">
+        <div class="card-block">
+          <h3 class="card-title">Pluto</h3>
+          <p id="Value_L10">Value</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
