@@ -19,6 +19,7 @@ export class VisualizeComponent implements OnInit {
   value8: number;
   value9: number;
   unit: string;
+  progessValue: string;
   ngOnInit() {
     this.temperature();
   }
@@ -26,6 +27,11 @@ export class VisualizeComponent implements OnInit {
     this.unit = 'Temperature : ';
     this.value1 = 30.5;
     this.value2 = 30.6;
+    this.progessValue = '90';
+    document.getElementById('bar1').style.width = this.progessValue + '%';
+    document.getElementById('bar2').style.width = this.progessValue + '%';
+    document.getElementById('bar3').style.width = this.progessValue + '%';
+
   }
 
   humidity() {
