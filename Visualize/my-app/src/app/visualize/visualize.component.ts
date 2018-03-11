@@ -20,6 +20,11 @@ export class VisualizeComponent implements OnInit {
   value9: number;
   unit: string;
   progessValue: number;
+  progessPercen: number;
+  humidityValue: number;
+  humidityPercen: number
+  pressureValue: number;
+  pressurePercen: number;
   ngOnInit() {
 
     this.temperature();
@@ -28,19 +33,24 @@ export class VisualizeComponent implements OnInit {
     this.unit = 'Temperature : ';
     this.value1 = 30.5;
     this.value2 = 30.6;
-    this.progessValue = 99;
+    this.progessValue = 23.6;
+    this.progessPercen = ((this.progessValue+20)/80)*100
   }
 
   humidity() {
     this.unit = 'Humidity : ';
     this.value1 = 55.5;
     this.value2 = 55.6;
+    this.humidityValue = 30;
+    this.humidityPercen = ((this.humidityValue-20)/80)*100
   }
 
   pressure() {
     this.unit = 'Pressure : ';
     this.value1 = 999.5;
     this.value2 = 999.6;
+    this.pressureValue = 9700;
+    this.pressurePercen = ((this.progessValue-8000)/10000)*100
 
   }
 
