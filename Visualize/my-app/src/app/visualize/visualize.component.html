@@ -22,39 +22,15 @@
           <p id="Value_L1">{{unit}}{{value1}}</p>
 
 
-          <div class="progress" *ngIf="progessValue <= 15">
-            <div id="lowProgressBar" class="bg-success
+          <div class="progress">
+            <div class="bg-success
             progress-bar-striped active"
                  role="progressbar"
                  aria-valuemin="-20"
                  aria-valuemax="60"
                  [attr.aria-valuenow]="progessPercen"
                  [style.width.%]="progessPercen">
-              {{progessValue}}
-            </div>
-          </div>
-
-          <div class="progress" *ngIf="progessValue > 16 && progessValue <= 28">
-            <div id="medProgressBar" class="bg-info
-            progress-bar-striped active"
-                 role="progressbar"
-                 aria-valuemin="-20"
-                 aria-valuemax="60"
-                 [attr.aria-valuenow]="progessPercen"
-                 [style.width.%]="progessPercen">
-              {{progessValue}}
-            </div>
-          </div>
-
-          <div class="progress" *ngIf="progessValue > 29">
-            <div id="highProgressBar" class="bg-danger
-            progress-bar-striped active"
-                 role="progressbar"
-                 aria-valuemin="-20"
-                 aria-valuemax="60"
-                 [attr.aria-valuenow]="progessPercen"
-                 [style.width.%]="progessPercen">
-              {{progessValue}}
+              {{value1}}
             </div>
           </div>
 
@@ -67,6 +43,19 @@
         <div class="card-block">
           <h3 class="card-title">Mercury</h3>
           <p id="Value_L2">{{unit}}{{value2}}</p>
+
+          <div class="progress">
+            <div class="bg-success
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen2"
+                 [style.width.%]="progessPercen2">
+              {{value2}}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -75,6 +64,19 @@
         <div class="card-block">
           <h3 class="card-title">Venus</h3>
           <p id="Value_L3">{{unit}}{{value3}}</p>
+
+          <div class="progress">
+            <div class="bg-success
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen3"
+                 [style.width.%]="progessPercen3">
+              {{value3}}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -83,6 +85,19 @@
         <div class="card-block">
           <h3 class="card-title">Earth</h3>
           <p id="Value_L4">{{unit}}{{value4}}</p>
+
+          <div class="progress">
+            <div class="bg-success
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen4"
+                 [style.width.%]="progessPercen4">
+              {{value4}}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -91,6 +106,19 @@
         <div class="card-block">
           <h3 class="card-title">Mars</h3>
           <p id="Value_L5">{{unit}}{{value5}}</p>
+
+          <div class="progress">
+            <div class="bg-success
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen5"
+                 [style.width.%]="progessPercen5">
+              {{value5}}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -102,6 +130,19 @@
         <div class="card-block">
           <h3 class="card-title">Jupiter</h3>
           <p id="Value_L6">{{unit}}{{value6}}</p>
+
+          <div class="progress">
+            <div class="bg-success
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen6"
+                 [style.width.%]="progessPercen6">
+              {{value6}}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -110,6 +151,20 @@
         <div class="card-block">
           <h3 class="card-title">Saturn</h3>
           <p id="Value_L7">{{unit}}{{value7}}</p>
+
+          <div class="progress">
+            <div class="bg-success
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen7"
+                 [style.width.%]="progessPercen7">
+              {{value7}}
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
@@ -118,6 +173,19 @@
         <div class="card-block">
           <h3 class="card-title">Uraus</h3>
           <p id="Value_L8">{{unit}}{{value8}}</p>
+
+          <div class="progress">
+            <div class="bg-success
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen8"
+                 [style.width.%]="progessPercen8">
+              {{value8}}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -126,6 +194,20 @@
         <div class="card-block">
           <h3 class="card-title">Neptune</h3>
           <p id="Value_L9">{{unit}}{{value9}}</p>
+
+          <div class="progress">
+            <div class="bg-success
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen9"
+                 [style.width.%]="progessPercen9">
+              {{value9}}
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
@@ -134,6 +216,20 @@
         <div class="card-block">
           <h3 class="card-title">Pluto</h3>
           <p id="Value_L10">{{unit}}{{value10}}</p>
+
+          <div class="progress">
+            <div class="bg-success
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen10"
+                 [style.width.%]="progessPercen10">
+              {{value10}}
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>

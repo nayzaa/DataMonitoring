@@ -25,10 +25,31 @@ export class VisualizeComponent implements OnInit {
   unit: string;
   progessValue: number;
   progessPercen: number;
+
+  progessPercen2: number;
+  progessPercen3: number;
+  progessPercen4: number;
+  progessPercen5: number;
+  progessPercen6: number;
+  progessPercen7: number;
+  progessPercen8: number;
+  progessPercen9: number;
+  progessPercen10: number;
+
   humidityValue: number;
-  humidityPercen: number;
+
   pressureValue: number;
   pressurePercen: number;
+  pressurePercen2: number;
+  pressurePercen3: number;
+  pressurePercen4: number;
+  pressurePercen5: number;
+  pressurePercen6: number;
+  pressurePercen7: number;
+  pressurePercen8: number;
+  pressurePercen9: number;
+  pressurePercen10: number;
+
   running: string;
 
   // Data inject
@@ -37,7 +58,7 @@ export class VisualizeComponent implements OnInit {
   visualizePressure: VisualizePressure[];
   ngOnInit() {
     this.sleep(3000).then(() => {
-      this.temperature();
+      this.onTemperatureClicked();
     });
   }
 
@@ -72,6 +93,15 @@ export class VisualizeComponent implements OnInit {
       console.log(this.visualizeTemperature['LATTE-001'].temperature);
       this.progessValue = this.value1;
       this.progessPercen = ((this.progessValue + 20) / 80) * 100;
+      this.progessPercen2 = ((this.value2 + 20) / 80) * 100;
+      this.progessPercen3 = ((this.value3 + 20) / 80) * 100;
+      this.progessPercen4 = ((this.value4 + 20) / 80) * 100;
+      this.progessPercen5 = ((this.value5 + 20) / 80) * 100;
+      this.progessPercen6 = ((this.value6 + 20) / 80) * 100;
+      this.progessPercen7 = ((this.value7 + 20) / 80) * 100;
+      this.progessPercen8 = ((this.value8 + 20) / 80) * 100;
+      this.progessPercen9 = ((this.value9 + 20) / 80) * 100;
+      this.progessPercen10 = ((this.value10 + 20) / 80) * 100;
       this.temperature();
     });
     }
@@ -95,7 +125,16 @@ export class VisualizeComponent implements OnInit {
         console.log(this.visualizeHumidity['LATTE-001'].humidity);
         this.unit = 'Humidity : ';
         this.humidityValue = this.value1;
-        this.humidityPercen = ((this.humidityValue - 20) / 80) * 100;
+        this.progessPercen = ((this.humidityValue - 20) / 80) * 100;
+        this.progessPercen2 = ((this.value2 - 20) / 80) * 100;
+        this.progessPercen3 = ((this.value3 - 20) / 80) * 100;
+        this.progessPercen4 = ((this.value4 - 20) / 80) * 100;
+        this.progessPercen5 = ((this.value5 - 20) / 80) * 100;
+        this.progessPercen6 = ((this.value6 - 20) / 80) * 100;
+        this.progessPercen7 = ((this.value7 - 20) / 80) * 100;
+        this.progessPercen8 = ((this.value8 - 20) / 80) * 100;
+        this.progessPercen9 = ((this.value9 - 20) / 80) * 100;
+        this.progessPercen10 = ((this.value10 - 20) / 80) * 100;
         this.humidity();
       });
     }
@@ -118,7 +157,16 @@ export class VisualizeComponent implements OnInit {
         this.value10 = this.visualizePressure['LATTE-010'].pressure;
         console.log(this.visualizePressure['LATTE-001'].pressure);
         this.pressureValue = this.value1;
-        this.pressurePercen = ((this.progessValue - 8000) / 10000) * 100;
+        this.progessPercen = ((this.pressureValue - 8000) / 10000) * 100;
+        this.progessPercen2 = ((this.value2 - 8000) / 10000) * 100;
+        this.progessPercen3 = ((this.value3 - 8000) / 10000) * 100;
+        this.progessPercen4 = ((this.value4 - 8000) / 10000) * 100;
+        this.progessPercen5 = ((this.value5 - 8000) / 10000) * 100;
+        this.progessPercen6 = ((this.value6 - 8000) / 10000) * 100;
+        this.progessPercen7 = ((this.value7 - 8000) / 10000) * 100;
+        this.progessPercen8 = ((this.value8 - 8000) / 10000) * 100;
+        this.progessPercen9 = ((this.value9 - 8000) / 10000) * 100;
+        this.progessPercen10 = ((this.value10 - 8000) / 10000) * 100;
         this.pressure();
       });
     }
