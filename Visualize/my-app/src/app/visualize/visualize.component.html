@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-</head>
-
-
-
-<body>
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <button class="nav-link"  (click)="temperature()">Temperature</button>
+    <button class="nav-link"  (click)="onTemperatureClicked()">Temperature</button>
   </li>
   <li class="nav-item">
-    <button class="nav-link" (click)="humidity()">Humidity</button>
+    <button class="nav-link" (click)="onHumidityClicked()">Humidity</button>
   </li>
   <li class="nav-item">
-    <button class="nav-link" (click)="pressure()">Pressure</button>
+    <button class="nav-link" (click)="onPressureClicked()">Pressure</button>
   </li>
 </ul>
 
@@ -34,18 +21,6 @@
           <h3 class="card-title">Sun</h3>
           <p id="Value_L1">{{unit}}{{value1}}</p>
 
-
-          <div class="progress">
-            <div id="bar1" class="progress-bar bg-success" role="progressbar" style="width:30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-
-          <div class="progress">
-            <div id="bar2" class="progress-bar bg-info" role="progressbar" style="width:30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-
-          <div class="progress">
-            <div id="bar3" class="progress-bar bg-danger" role="progressbar" style="width:30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
 
         </div>
       </div>
@@ -62,7 +37,7 @@
       <div class="card card-inverse bg-inverse">
         <div class="card-block">
           <h3 class="card-title">Venus</h3>
-          <p id="Value_L3">Value</p>
+          <p id="Value_L3">{{unit}}{{value3}}</p>
         </div>
       </div>
     </div>
@@ -70,7 +45,7 @@
       <div class="card card-inverse bg-inverse">
         <div class="card-block">
           <h3 class="card-title">Earth</h3>
-          <p id="Value_L4">Value</p>
+          <p id="Value_L4">{{unit}}{{value4}}</p>
         </div>
       </div>
     </div>
@@ -78,7 +53,7 @@
       <div class="card card-inverse bg-inverse">
         <div class="card-block">
           <h3 class="card-title">Mars</h3>
-          <p id="Value_L5">Value</p>
+          <p id="Value_L5">{{unit}}{{value5}}</p>
         </div>
       </div>
     </div>
@@ -89,7 +64,7 @@
       <div class="card card-inverse bg-inverse">
         <div class="card-block">
           <h3 class="card-title">Jupiter</h3>
-          <p id="Value_L6">Value</p>
+          <p id="Value_L6">{{unit}}{{value6}}</p>
         </div>
       </div>
     </div>
@@ -97,7 +72,7 @@
       <div class="card card-inverse bg-inverse">
         <div class="card-block">
           <h3 class="card-title">Saturn</h3>
-          <p id="Value_L7">Value</p>
+          <p id="Value_L7">{{unit}}{{value7}}</p>
         </div>
       </div>
     </div>
@@ -105,7 +80,7 @@
       <div class="card card-inverse bg-inverse">
         <div class="card-block">
           <h3 class="card-title">Uraus</h3>
-          <p id="Value_L8">Value</p>
+          <p id="Value_L8">{{unit}}{{value8}}</p>
         </div>
       </div>
     </div>
@@ -113,7 +88,7 @@
       <div class="card card-inverse bg-inverse">
         <div class="card-block">
           <h3 class="card-title">Neptune</h3>
-          <p id="Value_L9">Value</p>
+          <p id="Value_L9">{{unit}}{{value9}}</p>
         </div>
       </div>
     </div>
@@ -121,7 +96,7 @@
       <div class="card card-inverse bg-inverse">
         <div class="card-block">
           <h3 class="card-title">Pluto</h3>
-          <p id="Value_L10">Value</p>
+          <p id="Value_L10">{{unit}}{{value10}}</p>
         </div>
       </div>
     </div>
@@ -130,5 +105,4 @@
 
 
 
-</body>
-</html>
+

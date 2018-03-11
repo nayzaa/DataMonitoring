@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {VisualizeTemperature} from './visualize.temperature';
+import {VisualizeHumidity} from './visualize.humidity';
+
 
 
 @Component({
@@ -8,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisualizeComponent implements OnInit {
   constructor() { }
-
   value1: number;
   value2: number;
   value3: number;
@@ -18,26 +20,72 @@ export class VisualizeComponent implements OnInit {
   value7: number;
   value8: number;
   value9: number;
+  value10: number;
   unit: string;
-  progessValue: string;
-  ngOnInit() {
-    this.temperature();
-  }
-  temperature() {
-    this.unit = 'Temperature : ';
-    this.value1 = 30.5;
-    this.value2 = 30.6;
-    this.progessValue = '90';
-    document.getElementById('bar1').style.width = this.progessValue + '%';
-    document.getElementById('bar2').style.width = this.progessValue + '%';
-    document.getElementById('bar3').style.width = this.progessValue + '%';
+  running: string;
 
+  // Data inject
+  visualizeTemperature: VisualizeTemperature[];
+  visualizeHumidity: VisualizeHumidity[];
+  ngOnInit() {
+    this.sleep(3000).then(() => {
+      this.temperature();
+    });
+  }
+
+  onTemperatureClicked() {
+    this.running = 'temperature';
+      this.temperature();
+  }
+  onPressureClicked() {
+    this.running = 'pressure';
+    this.pressure();
+  }
+  onHumidityClicked() {
+    this.running = 'humidity';
+    this.humidity();
+  }
+
+  temperature() {
+    if (this.running === 'temperature') {
+    this.visualizeTemperature = JSON.parse(sessionStorage.getItem('temperature'));
+    this.unit = 'Temperature : ';
+    this.sleep(500).then(() => {
+      this.value1 = this.visualizeTemperature['LATTE-001'].temperature;
+      this.value2 = this.visualizeTemperature['LATTE-002'].temperature;
+      this.value3 = this.visualizeTemperature['LATTE-003'].temperature;
+      this.value4 = this.visualizeTemperature['LATTE-004'].temperature;
+      this.value5 = this.visualizeTemperature['LATTE-005'].temperature;
+      this.value6 = this.visualizeTemperature['LATTE-006'].temperature;
+      this.value7 = this.visualizeTemperature['LATTE-007'].temperature;
+      this.value8 = this.visualizeTemperature['LATTE-008'].temperature;
+      this.value9 = this.visualizeTemperature['LATTE-009'].temperature;
+      this.value10 = this.visualizeTemperature['LATTE-010'].temperature;
+      console.log(this.visualizeTemperature['LATTE-001'].temperature);
+      this.temperature();
+    });
+    }
   }
 
   humidity() {
-    this.unit = 'Humidity : ';
-    this.value1 = 55.5;
-    this.value2 = 55.6;
+    if (this.running === 'humidity') {
+      this.visualizeHumidity = JSON.parse(sessionStorage.getItem('humidity'));
+      this.unit = 'Humidity : ';
+      this.sleep(500).then(() => {
+        this.value1 = this.visualizeHumidity['LATTE-001'].humidity;
+        this.value2 = this.visualizeHumidity['LATTE-002'].humidity;
+        this.value3 = this.visualizeHumidity['LATTE-003'].humidity;
+        this.value4 = this.visualizeHumidity['LATTE-004'].humidity;
+        this.value5 = this.visualizeHumidity['LATTE-005'].humidity;
+        this.value6 = this.visualizeHumidity['LATTE-006'].humidity;
+        this.value7 = this.visualizeHumidity['LATTE-007'].humidity;
+        this.value8 = this.visualizeHumidity['LATTE-008'].humidity;
+        this.value9 = this.visualizeHumidity['LATTE-009'].humidity;
+        this.value10 = this.visualizeHumidity['LATTE-010'].humidity;
+        console.log(this.visualizeHumidity['LATTE-001'].humidity);
+        this.humidity();
+      });
+    }
   }
 
   pressure() {
@@ -47,5 +95,8 @@ export class VisualizeComponent implements OnInit {
 
   }
 
+  sleep(time) {
+    return new Promise((resolve => setTimeout(resolve, time)));
+  }
 
 }

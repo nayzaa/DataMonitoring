@@ -10,7 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
         <script>
             // Create a client instance
-            client = new Paho.MQTT.Client("46.101.48.109", 9001, "teepop-01");
+            client = new Paho.MQTT.Client("46.101.48.109", 9001, "galaxy-01");
             var doc = {};
 
             // set callback handlers
@@ -53,7 +53,7 @@
                         }
 
                         doc[obj.d.myName].temperature = obj.d.temperature;
-                        console.log(doc);
+                        //console.log(doc);
 
                         var converted = JSON.stringify(doc);
                         console.log(converted);
