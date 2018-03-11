@@ -11,20 +11,18 @@
 
 
 <body>
-<nav class="navbar navbar-inverse bg-inverse">
-  <h1 class="navbar-brand mb-0">Moitor</h1>
-</nav>
+
 
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link"  (click)="temperature()" href="#">Temperature</a>
+    <button class="nav-link"  (click)="temperature()">Temperature</button>
   </li>
   <li class="nav-item">
-    <a class="nav-link" (click)="humidity()" href="#">Humidity</a>
+    <button class="nav-link" (click)="humidity()">Humidity</button>
   </li>
   <li class="nav-item">
-    <a class="nav-link" (click)="pressure()" href="#">Pressure</a>
+    <button class="nav-link" (click)="pressure()">Pressure</button>
   </li>
 </ul>
 
@@ -35,7 +33,7 @@
       <div class="card card-inverse bg-inverse">
         <div class="card-block">
           <h3 class="card-title">Sun</h3>
-          <p id="Value_L1">Value</p>
+          <p id="Value_L1">{{unit}}{{value1}}</p>
         </div>
       </div>
     </div>
@@ -43,7 +41,7 @@
       <div class="card card-inverse bg-inverse">
         <div class="card-block">
           <h3 class="card-title">Mercury</h3>
-          <p id="Value_L2">Value</p>
+          <p id="Value_L2">{{unit}}{{value2}}</p>
         </div>
       </div>
     </div>
