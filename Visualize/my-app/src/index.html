@@ -1,14 +1,72 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>MyApp</title>
-  <base href="/">
+    <head>
+        <meta charset="utf-8">
+        <title>MyApp</title>
+        <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+        <script>
+            // Create a client instance
+            client = new Paho.MQTT.Client("46.101.48.109", 9001, "teepop-01");
+            var doc = {};
+
+            // set callback handlers
+            client.onConnectionLost = onConnectionLost;
+            client.onMessageArrived = onMessageArrived;
+
+            // connect the client
+            client.connect({onSuccess:onConnect});
+
+            // called when the client connects
+            function onConnect() {
+                // Once a connection has been made, make a subscription and send a message.
+                console.log("onConnect");
+                client.subscribe("/CAMT/#");
+            }
+
+            // called when the client loses its connection
+            function onConnectionLost(responseObject) {
+                if (responseObject.errorCode !== 0) {
+                    console.log("onConnectionLost:"+responseObject.errorMessage);
+                }
+            }
+
+            // called when a message arrives
+            function onMessageArrived(message) {
+                // console.log("onMessageArrived:"+message.payloadString);
+                storeData(message.payloadString);
+            }
+
+            function storeData(jsonString){
+                // console.log("Sent to storeData: "+jsonString);
+
+                var obj = JSON.parse(jsonString);
+                // console.log(obj);
+
+                if (typeof(Storage) !== "undefined"){
+                    if (obj.d) {
+                        if(doc[obj.d.myName] === undefined){
+                            doc[obj.d.myName] = {temperature:""};
+                        }
+
+                        doc[obj.d.myName].temperature = obj.d.temperature;
+                        console.log(doc);
+
+                        var converted = JSON.stringify(doc);
+                        console.log(converted);
+
+                        sessionStorage.temperature = converted;
+                    }
+                }else{
+                    // var temperature
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <app-root></app-root>
+    </body>
 </html>

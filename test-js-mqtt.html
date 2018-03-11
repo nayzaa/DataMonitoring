@@ -4,6 +4,7 @@
         <script>
             // Create a client instance
             client = new Paho.MQTT.Client("46.101.48.109", 9001, "teepop-01");
+            var doc = {};
 
             // set callback handlers
             client.onConnectionLost = onConnectionLost;
@@ -11,7 +12,6 @@
 
             // connect the client
             client.connect({onSuccess:onConnect});
-
 
             // called when the client connects
             function onConnect() {
@@ -29,7 +29,33 @@
 
             // called when a message arrives
             function onMessageArrived(message) {
-                console.log("onMessageArrived:"+message.payloadString);
+                // console.log("onMessageArrived:"+message.payloadString);
+                storeData(message.payloadString);
+            }
+
+            function storeData(jsonString){
+              // console.log("Sent to storeData: "+jsonString);
+
+              var obj = JSON.parse(jsonString);
+              // console.log(obj);
+
+              if (typeof(Storage) !== "undefined"){
+                if (obj.d) {
+                  if(doc[obj.d.myName] === undefined){
+                    doc[obj.d.myName] = {temperature:""};
+                  }
+
+                  doc[obj.d.myName].temperature = obj.d.temperature;
+                  console.log(doc);
+
+                  var converted = JSON.stringify(doc);
+                  console.log(converted);
+
+                  sessionStorage.temperature = converted;
+                }
+              }else{
+                // var temperature
+              }
             }
         </script>
     </head>
