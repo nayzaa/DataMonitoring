@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {VisualizeTemperature} from './visualize.temperature';
 import {VisualizeHumidity} from './visualize.humidity';
-import {VisualizePressure} from "./visualize.pressure";
+import {VisualizePressure} from './visualize.pressure';
 
 
 
@@ -23,6 +23,12 @@ export class VisualizeComponent implements OnInit {
   value9: number;
   value10: number;
   unit: string;
+  progessValue: number;
+  progessPercen: number;
+  humidityValue: number;
+  humidityPercen: number;
+  pressureValue: number;
+  pressurePercen: number;
   running: string;
 
   // Data inject
@@ -37,7 +43,7 @@ export class VisualizeComponent implements OnInit {
 
   onTemperatureClicked() {
     this.running = 'temperature';
-      this.temperature();
+    this.temperature();
   }
   onPressureClicked() {
     this.running = 'pressure';
@@ -64,6 +70,8 @@ export class VisualizeComponent implements OnInit {
       this.value9 = this.visualizeTemperature['LATTE-009'].temperature;
       this.value10 = this.visualizeTemperature['LATTE-010'].temperature;
       console.log(this.visualizeTemperature['LATTE-001'].temperature);
+      this.progessValue = this.value1;
+      this.progessPercen = ((this.progessValue + 20) / 80) * 100;
       this.temperature();
     });
     }
@@ -85,6 +93,9 @@ export class VisualizeComponent implements OnInit {
         this.value9 = this.visualizeHumidity['LATTE-009'].humidity;
         this.value10 = this.visualizeHumidity['LATTE-010'].humidity;
         console.log(this.visualizeHumidity['LATTE-001'].humidity);
+        this.unit = 'Humidity : ';
+        this.humidityValue = this.value1;
+        this.humidityPercen = ((this.humidityValue - 20) / 80) * 100;
         this.humidity();
       });
     }
@@ -106,12 +117,14 @@ export class VisualizeComponent implements OnInit {
         this.value9 = this.visualizePressure['LATTE-009'].pressure;
         this.value10 = this.visualizePressure['LATTE-010'].pressure;
         console.log(this.visualizePressure['LATTE-001'].pressure);
+        this.pressureValue = this.value1;
+        this.pressurePercen = ((this.progessValue - 8000) / 10000) * 100;
         this.pressure();
       });
     }
 
-  }
 
+  }
   sleep(time) {
     return new Promise((resolve => setTimeout(resolve, time)));
   }

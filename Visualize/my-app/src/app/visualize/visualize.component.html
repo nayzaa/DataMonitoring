@@ -22,6 +22,43 @@
           <p id="Value_L1">{{unit}}{{value1}}</p>
 
 
+          <div class="progress" *ngIf="progessValue <= 15">
+            <div id="lowProgressBar" class="bg-success
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen"
+                 [style.width.%]="progessPercen">
+              {{progessValue}}
+            </div>
+          </div>
+
+          <div class="progress" *ngIf="progessValue > 16 && progessValue <= 28">
+            <div id="medProgressBar" class="bg-info
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen"
+                 [style.width.%]="progessPercen">
+              {{progessValue}}
+            </div>
+          </div>
+
+          <div class="progress" *ngIf="progessValue > 29">
+            <div id="highProgressBar" class="bg-danger
+            progress-bar-striped active"
+                 role="progressbar"
+                 aria-valuemin="-20"
+                 aria-valuemax="60"
+                 [attr.aria-valuenow]="progessPercen"
+                 [style.width.%]="progessPercen">
+              {{progessValue}}
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
