@@ -24,6 +24,8 @@ export class VisualizeComponent implements OnInit {
   unit: string;
   running: string;
 
+  temperatureHistory: number[10][20];
+
   // Data inject
   visualizeTemperature: VisualizeTemperature[];
   visualizeHumidity: VisualizeHumidity[];
@@ -33,9 +35,25 @@ export class VisualizeComponent implements OnInit {
     });
   }
 
+  newHistory(){
+    return [
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0]
+    ]
+  }
+
   onTemperatureClicked() {
     this.running = 'temperature';
-      this.temperature();
+    this.temperature = newHistory();
+    this.temperature();
   }
   onPressureClicked() {
     this.running = 'pressure';
@@ -48,22 +66,25 @@ export class VisualizeComponent implements OnInit {
 
   temperature() {
     if (this.running === 'temperature') {
-    this.visualizeTemperature = JSON.parse(sessionStorage.getItem('temperature'));
-    this.unit = 'Temperature : ';
-    this.sleep(500).then(() => {
-      this.value1 = this.visualizeTemperature['LATTE-001'].temperature;
-      this.value2 = this.visualizeTemperature['LATTE-002'].temperature;
-      this.value3 = this.visualizeTemperature['LATTE-003'].temperature;
-      this.value4 = this.visualizeTemperature['LATTE-004'].temperature;
-      this.value5 = this.visualizeTemperature['LATTE-005'].temperature;
-      this.value6 = this.visualizeTemperature['LATTE-006'].temperature;
-      this.value7 = this.visualizeTemperature['LATTE-007'].temperature;
-      this.value8 = this.visualizeTemperature['LATTE-008'].temperature;
-      this.value9 = this.visualizeTemperature['LATTE-009'].temperature;
-      this.value10 = this.visualizeTemperature['LATTE-010'].temperature;
-      console.log(this.visualizeTemperature['LATTE-001'].temperature);
-      this.temperature();
-    });
+      this.visualizeTemperature = JSON.parse(sessionStorage.getItem('temperature'));
+      this.unit = 'Temperature : ';
+      this.sleep(500).then(() => {
+        this.value1 = this.visualizeTemperature['LATTE-001'].temperature;
+        this.value2 = this.visualizeTemperature['LATTE-002'].temperature;
+        this.value3 = this.visualizeTemperature['LATTE-003'].temperature;
+        this.value4 = this.visualizeTemperature['LATTE-004'].temperature;
+        this.value5 = this.visualizeTemperature['LATTE-005'].temperature;
+        this.value6 = this.visualizeTemperature['LATTE-006'].temperature;
+        this.value7 = this.visualizeTemperature['LATTE-007'].temperature;
+        this.value8 = this.visualizeTemperature['LATTE-008'].temperature;
+        this.value9 = this.visualizeTemperature['LATTE-009'].temperature;
+        this.value10 = this.visualizeTemperature['LATTE-010'].temperature;
+        console.log(this.visualizeTemperature['LATTE-001'].temperature);
+
+        this.temperature[0].push(this.value1);
+
+        this.temperature();
+      });
     }
   }
 
