@@ -1,66 +1,86 @@
 <html>
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
-        <script>
-            // Create a client instance
-            client = new Paho.MQTT.Client("46.101.48.109", 9001, "teepop-01");
-            var doc = {};
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+  <script>
+  // Create a client instance
+  client = new Paho.MQTT.Client("46.101.48.109", 9001, "teepop-01");
+  var docTemperature = {};
+  var docPressure = {};
+  var docHumidity = {};
 
-            // set callback handlers
-            client.onConnectionLost = onConnectionLost;
-            client.onMessageArrived = onMessageArrived;
+  // set callback handlers
+  client.onConnectionLost = onConnectionLost;
+  client.onMessageArrived = onMessageArrived;
 
-            // connect the client
-            client.connect({onSuccess:onConnect});
+  // connect the client
+  client.connect({onSuccess:onConnect});
 
-            // called when the client connects
-            function onConnect() {
-                // Once a connection has been made, make a subscription and send a message.
-                console.log("onConnect");
-                client.subscribe("/CAMT/#");
-            }
+  // called when the client connects
+  function onConnect() {
+    // Once a connection has been made, make a subscription and send a message.
+    console.log("onConnect");
+    client.subscribe("/CAMT/#");
+  }
 
-            // called when the client loses its connection
-            function onConnectionLost(responseObject) {
-                if (responseObject.errorCode !== 0) {
-                    console.log("onConnectionLost:"+responseObject.errorMessage);
-                }
-            }
+  // called when the client loses its connection
+  function onConnectionLost(responseObject) {
+    if (responseObject.errorCode !== 0) {
+      console.log("onConnectionLost:"+responseObject.errorMessage);
+    }
+  }
 
-            // called when a message arrives
-            function onMessageArrived(message) {
-                // console.log("onMessageArrived:"+message.payloadString);
-                storeData(message.payloadString);
-            }
+  // called when a message arrives
+  function onMessageArrived(message) {
+    // console.log("onMessageArrived:"+message.payloadString);
+    storeData(message.payloadString);
+  }
 
-            function storeData(jsonString){
-              // console.log("Sent to storeData: "+jsonString);
+  function storeData(jsonString){
+    // console.log("Sent to storeData: "+jsonString);
 
-              var obj = JSON.parse(jsonString);
-              // console.log(obj);
+    var obj = JSON.parse(jsonString);
+    // console.log(obj);
 
-              if (typeof(Storage) !== "undefined"){
-                if (obj.d) {
-                  if(doc[obj.d.myName] === undefined){
-                    doc[obj.d.myName] = {temperature:""};
-                  }
+    if (typeof(Storage) !== "undefined"){
+      if (obj.d) {
+        // TEMPERATURE
+        if(docTemperature[obj.d.myName] === undefined){
+          docTemperature[obj.d.myName] = {temperature:""};
+        }
+        docTemperature[obj.d.myName].temperature = obj.d.temperature;
+        console.log(docTemperature);
+        var converted = JSON.stringify(docTemperature);
+        console.log(converted);
+        sessionStorage.temperature = converted;
 
-                  doc[obj.d.myName].temperature = obj.d.temperature;
-                  console.log(doc);
+        // PRESSURE
+        if(docPressure[obj.d.myName] === undefined){
+          docPressure[obj.d.myName] = {pressure:""};
+        }
+        docPressure[obj.d.myName].pressure = obj.d.pressure;
+        console.log(docPressure);
+        var converted = JSON.stringify(docPressure);
+        console.log(converted);
+        sessionStorage.pressure = converted;
 
-                  var converted = JSON.stringify(doc);
-                  console.log(converted);
-
-                  sessionStorage.temperature = converted;
-                }
-              }else{
-                // var temperature
-              }
-            }
-        </script>
-    </head>
-    <body>
-        Hi
-    </body>
+        // HUMIDITY
+        if(docHumidity[obj.d.myName] === undefined){
+          docHumidity[obj.d.myName] = {humidity:""};
+        }
+        docHumidity[obj.d.myName].humidity = obj.d.humidity;
+        console.log(docHumidity);
+        var converted = JSON.stringify(docHumidity);
+        console.log(converted);
+        sessionStorage.humidity = converted;
+      }
+    }else{
+      // var temperature
+    }
+  }
+  </script>
+</head>
+<body>
+  Hi
+</body>
 
 </html>
