@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {VisualizeTemperature} from './visualize.temperature';
 import {VisualizeHumidity} from './visualize.humidity';
+import {VisualizePressure} from "./visualize.pressure";
 
 
 
@@ -27,6 +28,7 @@ export class VisualizeComponent implements OnInit {
   // Data inject
   visualizeTemperature: VisualizeTemperature[];
   visualizeHumidity: VisualizeHumidity[];
+  visualizePressure: VisualizePressure[];
   ngOnInit() {
     this.sleep(3000).then(() => {
       this.temperature();
@@ -89,9 +91,24 @@ export class VisualizeComponent implements OnInit {
   }
 
   pressure() {
-    this.unit = 'Pressure : ';
-    this.value1 = 999.5;
-    this.value2 = 999.6;
+    if (this.running === 'pressure') {
+      this.visualizePressure = JSON.parse(sessionStorage.getItem('pressure'));
+      this.unit = 'Pressure : ';
+      this.sleep(500).then(() => {
+        this.value1 = this.visualizePressure['LATTE-001'].pressure;
+        this.value2 = this.visualizePressure['LATTE-002'].pressure;
+        this.value3 = this.visualizePressure['LATTE-003'].pressure;
+        this.value4 = this.visualizePressure['LATTE-004'].pressure;
+        this.value5 = this.visualizePressure['LATTE-005'].pressure;
+        this.value6 = this.visualizePressure['LATTE-006'].pressure;
+        this.value7 = this.visualizePressure['LATTE-007'].pressure;
+        this.value8 = this.visualizePressure['LATTE-008'].pressure;
+        this.value9 = this.visualizePressure['LATTE-009'].pressure;
+        this.value10 = this.visualizePressure['LATTE-010'].pressure;
+        console.log(this.visualizePressure['LATTE-001'].pressure);
+        this.pressure();
+      });
+    }
 
   }
 
